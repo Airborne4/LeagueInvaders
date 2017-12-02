@@ -15,12 +15,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
-Font titleFont = new Font("Arial", Font.PLAIN, 48);
-Font startFont=new Font("Arial",Font.PLAIN,30);
-Font instructionFont=new Font("Arial",Font.ITALIC ,30 );
-Font gameOver=new Font("Arial", Font.BOLD,50);
-Font killed=new Font("Arial", Font.PLAIN, 30);
-Font restartFont=new Font("Arial",Font.ITALIC, 30 );
+	Font titleFont = new Font("Arial", Font.PLAIN, 48);
+	Font startFont = new Font("Arial", Font.PLAIN, 30);
+	Font instructionFont = new Font("Arial", Font.ITALIC, 30);
+	Font gameOver = new Font("Arial", Font.BOLD, 50);
+	Font killed = new Font("Arial", Font.PLAIN, 30);
+	Font restartFont = new Font("Arial", Font.ITALIC, 30);
+	Rocketship r = new Rocketship(250, 700, 50, 50);
+
 	public void paintComponent(Graphics g) {
 		if (currentState == MENU_STATE) {
 			drawMenuState(g);
@@ -29,6 +31,7 @@ Font restartFont=new Font("Arial",Font.ITALIC, 30 );
 		} else if (currentState == END_STATE) {
 			drawEndState(g);
 		}
+
 	}
 
 	public GamePanel() {
@@ -63,7 +66,7 @@ Font restartFont=new Font("Arial",Font.ITALIC, 30 );
 	}
 
 	void updateGameState() {
-
+r.update();
 	}
 
 	void updateEndState() {
@@ -76,36 +79,34 @@ Font restartFont=new Font("Arial",Font.ITALIC, 30 );
 		g.setColor(Color.black);
 		g.setFont(titleFont);
 		g.drawString("LEAGUE INVADERS!", 15, 200);
-g.setFont(startFont);
-	g.drawString("Press ENTER to start!", 95, 335);
-	g.setFont(instructionFont);
-	g.drawString("Press SPACE for instructions", 50, 430);
-	
-	
-	
+		g.setFont(startFont);
+		g.drawString("Press ENTER to start!", 95, 335);
+		g.setFont(instructionFont);
+		g.drawString("Press SPACE for instructions", 50, 430);
+
 	}
 
 	void drawGameState(Graphics g) {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, 500, 800);
+		r.draw(g);
 
 	}
 
 	void drawEndState(Graphics g) {
 		g.setColor(Color.red);
 		g.fillRect(0, 0, 500, 800);
-g.setColor(Color.black);
-g.setFont(gameOver);
-g.drawString("GAME OVER", 90, 200);
-g.setFont(killed);
-g.drawString("You killed aliens!", 135, 300);
-g.setFont(restartFont);
-g.drawString("Press BACKSPACE to restart", 55, 400);
+		g.setColor(Color.black);
+		g.setFont(gameOver);
+		g.drawString("GAME OVER", 90, 200);
+		g.setFont(killed);
+		g.drawString("You killed aliens!", 135, 300);
+		g.setFont(restartFont);
+		g.drawString("Press BACKSPACE to restart", 55, 400);
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		
 
 	}
 
@@ -124,7 +125,6 @@ g.drawString("Press BACKSPACE to restart", 55, 400);
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
 
 	}
 
