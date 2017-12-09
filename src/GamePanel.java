@@ -119,9 +119,16 @@ r.update();
 			if (currentState > END_STATE) {
 				currentState = MENU_STATE;
 			}
-
+			if (currentState == GAME_STATE) {
+				if (e.getKeyCode()==KeyEvent.VK_W) {
+				
+				}
+			
+			}
+				
+			}
 		}
-	}
+	
 
 	@Override
 	public void keyReleased(KeyEvent e) {

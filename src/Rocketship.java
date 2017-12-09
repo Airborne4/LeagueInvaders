@@ -9,8 +9,11 @@ int speed=5;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		speed = 5;
 	}
-
+	void update() {
+		
+	}
 	void draw(Graphics g) {
 		g.setColor(Color.BLUE);
 		g.fillRect(x, y, width, height);
