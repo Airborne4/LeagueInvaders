@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import javafx.scene.input.KeyCode;
+
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
