@@ -9,8 +9,6 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-
-
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	Timer t;
@@ -116,7 +114,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			om.addProjectile(new Projectile(r.x, r.y, 10, 10));
+		}
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 
 			currentState++;
