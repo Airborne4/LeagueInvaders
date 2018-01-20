@@ -37,12 +37,12 @@ public class ObjectManager {
 
 	void purgeObjects() {
 		for (int i = 0; i < aliens.size(); i++) {
-			if (aliens.get(i).isAlive == false) {
+			if (!aliens.get(i).isAlive) {
 				aliens.remove(i);
 			}
 		}
 		for (int i = 0; i < projectiles.size(); i++) {
-			if (projectiles.get(i).isAlive == false) {
+			if (!projectiles.get(i).isAlive) {
 				projectiles.remove(i);
 			}
 		}
@@ -56,7 +56,30 @@ public class ObjectManager {
 			enemyTimer = System.currentTimeMillis();
 		}
 	}
+	
+	public void checkCollision() {
+		for(Alien a : aliens){
 
+	        if(rocket.collisionBox.intersects(a.collisionBox)){
+
+	                rocket.isAlive = false;
+
+	        }
+	       for (Projectile p: projectiles) {
+			if (a.collisionBox.intersects(p.collisionBox)) {
+				a.isAlive = false;
+				p.isAlive = false;
+			}
+		}
+	}
+
+
+	}
+public void resetGame() {
+	projectiles = new ArrayList<Projectile>();
+	aliens = new ArrayList<Alien>();
+	
+}
 	public void addProjectile(Projectile pr) {
 		projectiles.add(pr);
 	}
